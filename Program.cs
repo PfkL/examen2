@@ -1,49 +1,55 @@
 ﻿using System;
 
-namespace CalculSuperficieGazon
+namespace Trier_Caracteres
 {
     class Program
     {
-        // Module principal de l’application.
+        // Méthode principale de l’application
         static void Main(string[] args)
         {
-            // Déclaration des variables et de la constante.
-            int Longueur_terrain, Largeur_terrain, Longueur_maison, Largeur_maison, Longueur_entree,
-                Largeur_entree, Superficie_terrain, Superficie_maison, Superficie_entree,
-                Superficie_gazon, Temps_requis;
-            const int Taux_de_coupe = 2;
+            // Déclaration des variables.
+            char Caractere_1 = ' ';
+            char Caractere_2 = ' ';
+            char Caractere_3 = ' ';
+            char Temp = ' ';
 
-            // Affichage de messages demandant les dimensions du terrain, de la maison et de l’entrée pavée.
-            Console.Write("Quelle est la longueur du terrain ? ");
-            Longueur_terrain = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Quelle est la largeur du terrain ? ");
-            Largeur_terrain = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Quelle est la longueur de la maison ? ");
-            Longueur_maison = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Quelle est la largeur de la maison ? ");
-            Largeur_maison = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Quelle est la longueur de l’entrée ? ");
-            Longueur_entree = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Quelle est la largeur de l’entrée ? ");
-            Largeur_entree = Convert.ToInt32(Console.ReadLine());
+            // Saisie des trois caractères par l’utilisateur.
+            Console.WriteLine();
+            Console.Write("Donnez-moi votre premier caractère : ");
+            Caractere_1 = Convert.ToChar(Console.ReadLine());
+            Console.WriteLine();
+            Console.Write("Donnez-moi votre deuxième caractère : ");
+            Caractere_2 = Convert.ToChar(Console.ReadLine());
+            Console.WriteLine();
+            Console.Write("Donnez-moi votre troisième caractère : ");
+            Caractere_3 = Convert.ToChar(Console.ReadLine());
 
-            // Calcul de la superficie du terrain.
-            Superficie_terrain = Longueur_terrain * Largeur_terrain;
+            // Changement de l’ordre des caractères si Caractere_1 est plus grand que Caractere_2.
+            if (Caractere_1 > Caractere_2)
+            {
+                Temp = Caractere_1;
+                Caractere_1 = Caractere_2;
+                Caractere_2 = Temp;
+            }
+            // Changement de l’ordre des caractères si Caractere_2 est plus grand que Caractere_3.
+            if (Caractere_2 > Caractere_3)
+            {
+                Temp = Caractere_2;
+                Caractere_2 = Caractere_3;
+                Caractere_3 = Temp;
+            }
+            // Changement de l’ordre des caractères si Caractere_1 est plus grand que Caractere_2.
+            if (Caractere_1 > Caractere_2)
+            {
+                Temp = Caractere_1;
+                Caractere_1 = Caractere_2;
+                Caractere_2 = Temp;
+            }
 
-            // Calcul de la superficie de la maison.
-            Superficie_maison = Longueur_maison * Largeur_maison;
-
-            // Calcul de la superficie de l’entrée pavée.
-            Superficie_entree = Longueur_entree * Largeur_entree;
-
-            // Calcul de la superficie du gazon.
-            Superficie_gazon = Superficie_terrain - (Superficie_maison + Superficie_entree);
-
-            // Calcul du temps requis pour tondre la superficie du gazon.
-            Temps_requis = Superficie_gazon / Taux_de_coupe;
-
-            // Affichage du résultat du temps requis pour tondre le gazon.
-            Console.WriteLine("Il vous faudra " + Temps_requis + " minutes pour tondre votre gazon.");
+            // Affichage des trois caractères mis en ordre.
+            Console.WriteLine();
+            Console.Write("Vos trois caractères mis en ordre alphabétique sont : "
+                + Caractere_1 + ", " + Caractere_2 + ", " + Caractere_3);
             Console.ReadKey();
         }
     }
