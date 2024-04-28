@@ -1,55 +1,67 @@
 ﻿using System;
 
-namespace Trier_Caracteres
+namespace Calcul_Achat
 {
     class Program
     {
-        // Méthode principale de l’application
+        // Méthode principale du programme.
         static void Main(string[] args)
         {
-            // Déclaration des variables.
-            char Caractere_1 = ' ';
-            char Caractere_2 = ' ';
-            char Caractere_3 = ' ';
-            char Temp = ' ';
+            // Section de déclaration des variables.
+            char CodeTaxe;
+            double Achat;
+            double Taxe;
+            double Total;
+            string NomClient;
 
-            // Saisie des trois caractères par l’utilisateur.
+            // Début de la saisie des informations pour l’achat d’un client.
             Console.WriteLine();
-            Console.Write("Donnez-moi votre premier caractère : ");
-            Caractere_1 = Convert.ToChar(Console.ReadLine());
+            Console.Write("Nom du client : ");
+            NomClient = Console.ReadLine();
             Console.WriteLine();
-            Console.Write("Donnez-moi votre deuxième caractère : ");
-            Caractere_2 = Convert.ToChar(Console.ReadLine());
+            Console.Write("Montant total des achats : ");
+            Achat = Convert.ToDouble(Console.ReadLine());
             Console.WriteLine();
-            Console.Write("Donnez-moi votre troisième caractère : ");
-            Caractere_3 = Convert.ToChar(Console.ReadLine());
 
-            // Changement de l’ordre des caractères si Caractere_1 est plus grand que Caractere_2.
-            if (Caractere_1 > Caractere_2)
+            // Affichage des choix applicables à la taxe de vente.
+            Console.WriteLine("**** CodeTaxe de taxe *****");
+            Console.WriteLine("* 0 - Aucune taxe *");
+            Console.WriteLine("* 1 - Taxe provinciale 4% *");
+            Console.WriteLine("* 2 - Taxe fédérale 7% *");
+            Console.WriteLine("* 3 - Taxe spéciale 8% *");
+            Console.WriteLine("***************************");
+            Console.WriteLine();
+
+            // Saisie du code de taxe applicable à l’achat du client.
+            Console.Write("Code de la taxe applicable : ");
+            CodeTaxe = Convert.ToChar(Console.ReadLine());
+
+            // Calcul de la taxe applicable sur les achats du client
+            switch (CodeTaxe)
             {
-                Temp = Caractere_1;
-                Caractere_1 = Caractere_2;
-                Caractere_2 = Temp;
-            }
-            // Changement de l’ordre des caractères si Caractere_2 est plus grand que Caractere_3.
-            if (Caractere_2 > Caractere_3)
-            {
-                Temp = Caractere_2;
-                Caractere_2 = Caractere_3;
-                Caractere_3 = Temp;
-            }
-            // Changement de l’ordre des caractères si Caractere_1 est plus grand que Caractere_2.
-            if (Caractere_1 > Caractere_2)
-            {
-                Temp = Caractere_1;
-                Caractere_1 = Caractere_2;
-                Caractere_2 = Temp;
+                case '0':
+                    Taxe = 0;
+                    break;
+                case '1':
+                    Taxe = Achat * 0.04;
+                    break;
+                case '2':
+                    Taxe = Achat * 0.07;
+                    break;
+                default:
+                    Taxe = Achat * 0.08;
+                    break;
             }
 
-            // Affichage des trois caractères mis en ordre.
+            // Calcul du total des achats, taxes incluses, du client.
+            Total = Achat + Taxe;
+
             Console.WriteLine();
-            Console.Write("Vos trois caractères mis en ordre alphabétique sont : "
-                + Caractere_1 + ", " + Caractere_2 + ", " + Caractere_3);
+            // Affichage des informations sur l’achat du client.
+            Console.WriteLine("Le total des achats de " + NomClient);
+            Console.WriteLine("Achat : $" + Achat);
+            Console.WriteLine("Taxe : $" + Taxe);
+            Console.WriteLine("Total : $" + Total);
             Console.ReadKey();
         }
     }
