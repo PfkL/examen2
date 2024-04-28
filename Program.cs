@@ -1,32 +1,32 @@
 ﻿using System;
 
-namespace Additionner
+namespace CalculTemperature
 {
     class Program
     {
-        // Méthode principale de l’application.
+        // Module principal du programme
         static void Main(string[] args)
         {
-            // Section de déclaration des variables
-            int Nombre_1, Nombre_2, Nombre_3, Total;
+            // Déclaration des variables.
+            int Temperature_Max, Temperature_Min;
+            double Temperature_Moyenne;
 
-            // Saisie du premier nombre.
-            Console.Write("Donnez-moi le premier nombre entier : ");
-            Nombre_1 = Convert.ToInt32(Console.ReadLine());
+            // Affichage du message : "Donnez-moi la température maximale de la journée :" à l’écran.
+            Console.Write("Donnez-moi la température maximale de la journée : ");
 
-            // Saisie du deuxième nombre.
-            Console.Write("Donnez-moi le deuxième nombre entier : ");
-            Nombre_2 = Convert.ToInt32(Console.ReadLine());
+            // Saisi de la température maximale de la journée et enregistrement dans la variable.
+            Temperature_Max = Convert.ToInt32(Console.ReadLine());
 
-            // Saisie du troisième nombre.
-            Console.Write("Donnez-moi le troisième nombre entier : ");
-            Nombre_3 = Convert.ToInt32(Console.ReadLine());
+            // Répétition pour la température minimale de la journée.
+            Console.Write("Donnez-moi la température minimale de la journée : ");
+            Temperature_Min = Convert.ToInt32(Console.ReadLine());
 
-            // Opération d’addition.
-            Total = Nombre_1 + Nombre_2 + Nombre_3;
+            // Opération de calcul de la température moyenne de la journée.
+            // Le résultat est enregistré dans la variable Temperature_Moyenne.
+            Temperature_Moyenne = (Temperature_Max + Temperature_Min) / 2;
 
-            // Affichage du résultat et fin du programme.
-            Console.WriteLine(Nombre_1 + " + " + Nombre_2 + " + " + Nombre_3 + " = " + Total);
+            // Affichage du résultat de l’opération à l’écran.
+            Console.WriteLine("La température moyenne de la journée a été de : " + Temperature_Moyenne);
             Console.ReadKey();
         }
     }
