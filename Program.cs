@@ -1,32 +1,49 @@
 ﻿using System;
 
-namespace CalculTemperature
+namespace CalculSuperficieGazon
 {
     class Program
     {
-        // Module principal du programme
+        // Module principal de l’application.
         static void Main(string[] args)
         {
-            // Déclaration des variables.
-            int Temperature_Max, Temperature_Min;
-            double Temperature_Moyenne;
+            // Déclaration des variables et de la constante.
+            int Longueur_terrain, Largeur_terrain, Longueur_maison, Largeur_maison, Longueur_entree,
+                Largeur_entree, Superficie_terrain, Superficie_maison, Superficie_entree,
+                Superficie_gazon, Temps_requis;
+            const int Taux_de_coupe = 2;
 
-            // Affichage du message : "Donnez-moi la température maximale de la journée :" à l’écran.
-            Console.Write("Donnez-moi la température maximale de la journée : ");
+            // Affichage de messages demandant les dimensions du terrain, de la maison et de l’entrée pavée.
+            Console.Write("Quelle est la longueur du terrain ? ");
+            Longueur_terrain = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Quelle est la largeur du terrain ? ");
+            Largeur_terrain = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Quelle est la longueur de la maison ? ");
+            Longueur_maison = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Quelle est la largeur de la maison ? ");
+            Largeur_maison = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Quelle est la longueur de l’entrée ? ");
+            Longueur_entree = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Quelle est la largeur de l’entrée ? ");
+            Largeur_entree = Convert.ToInt32(Console.ReadLine());
 
-            // Saisi de la température maximale de la journée et enregistrement dans la variable.
-            Temperature_Max = Convert.ToInt32(Console.ReadLine());
+            // Calcul de la superficie du terrain.
+            Superficie_terrain = Longueur_terrain * Largeur_terrain;
 
-            // Répétition pour la température minimale de la journée.
-            Console.Write("Donnez-moi la température minimale de la journée : ");
-            Temperature_Min = Convert.ToInt32(Console.ReadLine());
+            // Calcul de la superficie de la maison.
+            Superficie_maison = Longueur_maison * Largeur_maison;
 
-            // Opération de calcul de la température moyenne de la journée.
-            // Le résultat est enregistré dans la variable Temperature_Moyenne.
-            Temperature_Moyenne = (Temperature_Max + Temperature_Min) / 2;
+            // Calcul de la superficie de l’entrée pavée.
+            Superficie_entree = Longueur_entree * Largeur_entree;
 
-            // Affichage du résultat de l’opération à l’écran.
-            Console.WriteLine("La température moyenne de la journée a été de : " + Temperature_Moyenne);
+            // Calcul de la superficie du gazon.
+            Superficie_gazon = Superficie_terrain - (Superficie_maison + Superficie_entree);
+
+            // Calcul du temps requis pour tondre la superficie du gazon.
+            Temps_requis = Superficie_gazon / Taux_de_coupe;
+
+            // Affichage du résultat du temps requis pour tondre le gazon.
+            Console.WriteLine("Il vous faudra " + Temps_requis + " minutes pour tondre votre gazon.");
             Console.ReadKey();
         }
     }
